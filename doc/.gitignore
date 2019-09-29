@@ -1,1 +1,10 @@
-*.html
+# LaTeX
+*.aux
+*.glg
+*.glo
+*.gls
+*.glsdefs
+*.ist
+*.log
+*.pdf
+*.toc
