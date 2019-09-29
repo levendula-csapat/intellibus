@@ -1,0 +1,89 @@
+\documentclass[a4paper]{article}
+
+%%%%%%%%%%%%%%%%
+%%% PREAMBLE %%%
+%%%%%%%%%%%%%%%%
+
+%%% PACKAGES %%%
+\usepackage{fontspec}                     % set fonts
+	\setmainfont{Junicode}
+\usepackage[a4paper,margin=3cm]{geometry} % page layout
+\usepackage{fancyhdr}                     % headers & footers
+\usepackage{titling}                      % macros \thetitle, \theauthor
+\usepackage{graphicx}                     % enhanced graphics support
+	\graphicspath{{img/}}
+\usepackage[automake,toc]{glossaries}     % glossaries (obv)
+	\makeglossaries
+	\include{glossary}
+
+%%% OTHER %%%
+\setlength\headheight{22.3725pt}
+
+%%% META %%%
+\title{Assignment \#1 \\ Requirement analysis}
+\author{Levendula}
+\date{\today}
+
+%%% ADDITIONAL PACKAGE CONFIG %%%
+% fancyhdr
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\theauthor}
+\rhead{\thetitle}
+\lfoot{\today}
+\rfoot{\thepage}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%
+%%% BODY %%%
+%%%%%%%%%%%%
+
+\begin{document}
+
+\include{titlepage}
+
+\tableofcontents
+\clearpage
+
+\section{Our task}
+
+% TODO basically a copy of the task description and/or the specification
+% (or we could have the specification under a different subsection…)
+
+
+\section{List of stakeholders}
+
+% TODO
+
+
+\section{System context}
+
+% TODO
+
+
+\section{Requirements}
+
+\subsection{High level requirements}
+
+% TODO
+
+\subsection{Refinements}
+
+% TODO
+
+
+\section{Use cases}
+
+% TODO
+
+
+
+\section{Work journal}
+
+% TODO copy from Sheets when done
+
+\clearpage
+\printglossaries
+
+\end{document}
