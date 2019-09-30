@@ -73,6 +73,26 @@ questions that had arisen.
 
 % TODO: The goal of the project???
 
+\section{Ambiguous requirements}
+
+
+Interpretation of ‘make sure the buses are not overcrowded’.
+
+Ideas:
+
+The buses form a network that is capable of intelligently deciding which bus to ‘send’ where, in accordance to the number of people requesting the bus at the terminals, what routes other buses have planned and how many people are on certain buses. This approach is to solve the problem mentioned above; overcrowding can be avoided provided there is a sufficient number of vehicles at our disposal and the buses can autonomously decide their routes in such a way that no single bus is full while others are almost empty. Essentially, we could balance the number of passengers on the buses.
+
+What does a request contain of? Who can publish a request?
+
+Ideas:
+
+The request must contains the indentification of the worker who ordered the bus, the number of passengers who will travel, the starting point, the destination, and the planned time of the trip. To publish a request needed an authentication to avoid unauthorized access.
+
+Can the passenger change his/her destination during the transportation?
+
+Ideas:
+
+No, but the passengers can get off the vehicle before their former destination if they indicate their intention in time.
 
 
 \section{List of stakeholders}
@@ -172,15 +192,95 @@ questions that had arisen.
 
 \section{Requirements}
 
-\subsection{High level requirements}
+\subsection{Functional requirements}
+\begin{tabular}{l l}
+        F1 & The buses shall get around autonomously inside the site. \\
+        F1.1 & The buses shall be capable of transporting passengers around the office park. \\
+        F1.2 & The buses shall select their route automatically based on the current demand. \\
+        F1.3 & The buses must not have any permanent personnel on board. \\
+        F2 & The buses shall have a dedicated station in the park for storage and maintenance.\\
+        F3 & The passengers should be able to publish their transportation requests.\\
+        F3.1 & Registered users should be able to publish their requests in advance using a mobile application.\\
+        F3.2 & Passengers should be able to publish their transportation requests through the terminals.\\
+        F3.2.1 & Dedicated terminals should be installed in front of every major office building.\\
+\end{tabular}
 
-% TODO
-
-\subsection{Refinements}
-
-% TODO
+% TODO: kep beszurasa a diagramrol
 
 
+\subsection{Performance requirements}
+
+\begin{tabular}{l l}
+        P1 & The waiting time for a bus may not exceed 30 minutes. \\
+        P2 & The buses shall operate between 7 AM and 10 PM every workday. \\
+\end{tabular}
+
+% TODO: kep beszurasa a diagramrol
+
+
+\subsection{Reliability requirements}
+
+\begin{tabular}{l l}
+        R1 & The buses shall be able to complete at least 100 km on average between two interventions. \\
+        R2 & At least ⅔ of the buses should be operational at all times. \\
+        R3 & The buses should balance their load evenly if possible. \\
+\end{tabular}
+
+% TODO: kep beszurasa a diagramrol
+
+
+\subsection{Safety requirements}
+
+\begin{tabular}{l l}
+        SA1 & The buses must avoid causing any harm to the passengers. \\
+        SA2 & The system should have a database which contains actual information about the condition of the buses. \\
+        SA3 & The buses must avoid causing accidents. \\
+        SA4 & The buses should be equipped with sensors that can monitor road conditions. \\
+        SA5 & The buses must successfully complete a 30-day test run before acceptance. \\
+        SA6 & The buses may not be overcrowded. \\
+        SA7 & Health\&Safety regulations must be fulfilled. \\
+        SA8 & The buses may have a black box. \\
+        SA9 & The buses should close their doors only when no passenger is standing in the doorway. \\
+        SA10 & The buses should only brake gracefully, except when abrupt braking is the only viable option to avoid an accident. \\
+        SA11 & The Health\&Safety Department should have access to the database. \\
+        SA12 & The autonomous vehicles must be able to react to the behaviour of cyclists and pedestrians. \\
+\end{tabular}
+
+% TODO: kep beszurasa a diagramrol
+
+
+
+\subsection{Security requirements}
+
+\begin{tabular}{l l}
+        SE1 & The system must provide control access only authorized personnel. \\
+        SE2 & The mobile application must protect the personal information of the users. \\
+\end{tabular}
+
+% TODO: kep beszurasa a diagramrol
+
+
+
+\subsection{Supportability requirements}
+
+\begin{tabular}{l l}
+        SU1 & The buses should be able to notify the maintenance team and return to the station autonomously in case of a non-critical failure. \\
+        SU2 & Buses may have a group of 2–3 people stationed on site who can intervene (either remotely or manually) in case of a technical problem. \\
+\end{tabular}
+
+% TODO: kep beszurasa a diagramrol
+
+
+
+\subsection{Usability requirements}
+
+\begin{tabular}{l l}
+        U1 & The buses must be able to operate under any weather conditions. \\
+        U2 & The bus stations may be covered. \\
+        U3 & The mobile application’s login screen should be simple and efficient. \\
+\end{tabular}
+
+% TODO: kep beszurasa a diagramrol
 \section{Use cases}
 
 % TODO
