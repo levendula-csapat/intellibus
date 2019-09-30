@@ -15,6 +15,7 @@
 \usepackage[automake,toc]{glossaries}     % glossaries (obv)
 	\makeglossaries
 	\include{glossary}
+\usepackage{enumitem}                     % enhanced enumerations
 
 %%% OTHER %%%
 \setlength\headheight{22.3725pt}
@@ -49,79 +50,118 @@
 \section{Our task}
 
 % TODO basically a copy of the task description and/or the specification
-{Our job was to do the preparation of installing driverless autonomous vehicles to offer transportation service to the workers.}\\
-{We had to identify the stakeholders and model the context of the future system, and also to define the high-level requirements, necessery functions and use cases. We also documented non-trivial terms in a glossary and the ambiguous or contradicting requirements so that we can contact the customer with well-defined questions.}\\
-{We had to study the appendices, then we had to look through and discuss the questions that arised.}\\
 
-{TODO: The goal of the project???}\\
+% Ancsi: Nem kell a dolgokat {} közé tenni, csak ritkán (akkor, ha alkalmazni
+% akarsz rájuk valami olyan makrót, ami ilyen blokkokra teljesül, pl \scriptsize
+% (de ilyet csak kivételes esetekben csinálunk)
+% A sorok végére sem kell tenni \\-t, hanem egy sort kihagyva érjük el, hogy új
+% paragrafus legyen
+% Az ilyen TODO jellegű dolgokat pedig kommentbe tegyük (%-kal kezdődő sor)
+% -- Berci
+
+Our job was to do the preparation of installing driverless autonomous vehicles
+to offer transportation service to the workers.
+
+We had to identify the stakeholders and model the context of the future system,
+and also to define the high-level requirements, necessery functions and use
+cases. We also documented non-trivial terms in a glossary and the ambiguous or
+contradicting requirements so that we can contact the customer with well-defined
+questions.
+
+We had to study the appendices, then we had to look through and discuss the
+questions that arised.
+
+% TODO: The goal of the project???
 
 
 
 \section{List of stakeholders}
 
+% Ancsi: Erre van egy külön environment: description
+%
+% Úgy működik, hogy a \item-ek után írsz egy [] közé valamit, ami a magyarázandó
+% szó, majd utána írod is a magyarázatot. pl:
+%
+% \begin{description}
+% 	\item[HTTP] HyperText Transfer Protocol
+%	\item[MPLS] MultiProtocol Label Switching
+% 	\item[SMTP] Simple Mail Transfer Protocol
+% \end{description}
+%
+% (itt ennél kicsit mást használtam, hogy még szebb legyen, de az egy package
+% által működik csak (enumitem))
+%
+% Persze lehet szebbben formázni, ahogy lent tettem, mert hosszúak a sorok.
+%
+% -- Berci
 
-\begin{list}{-}
-	\item \textbf{authorities}
-		\begin{itemize}	
-			\item The experts of aoutonomous vehicles with official responsibility for a particular area of activity
-		\end{itemize}
-	\item \textbf{office workers}
-		\begin{itemize}
-			\item The passengers of the aoutonomous buses.
-		\end{itemize}		
-	\item \textbf{Health\&Safety Department}
-		\begin{itemize}
-			\item A group at our company responsible for analyzing the potential health and safety risks of our products and forming rules and regulations to make sure these risks are averted.
-		\end{itemize}
-	\item \textbf{project sponsor}
-		\begin{itemize}
-			\item An organization that contribute financially to the project.
-		\end{itemize}	
-	\item \textbf{project manager}
-		\begin{itemize}
-			\item He/she has the responsibility of the planning, procurement and execution of the project. He/she responsible for accomplishing the project objectives.
-		\end{itemize}
-	\item \textbf{architects}
-		\begin{itemize}
-			\item The persons who design new architectures and they responsible for achieving a particular plan or aim.
-		\end{itemize}
-	\item \textbf{autonomous vehicle control engineers}
-		\begin{itemize}
-			\item They are capable of developing new technologies and handling problems of autonomous vehicle transport systems taking into account environmental and energy management requirements.
-		\end{itemize}
-	\item \textbf{mechanical engineers}
-		\begin{itemize}
-			\item They work with automotive mechanical systems, design power-producing machines.
-		\end{itemize}
-	\item \textbf{mobile application developers}
-		\begin{itemize}
-			\item They create, maintain and implement the source code to develop mobile apps that meet the requirements of the clients using the computer programming languages.
-		\end{itemize}
-	\item \textbf{terminal developers}
-		\begin{itemize}
-			\item TODO: One sentence about their duty. I don't really know right now, sorry. 
-		\end{itemize}
-	\item \textbf{system testers}
-		\begin{itemize}
-			\item They create testing plans for the system and identify what parts of a system can be tested using automated tools and what require manual testing. They also accomplish the tests.
-		\end{itemize}
-	\item \textbf{mechanics}
-		\begin{itemize}
-			\item The persons who repairs and maintains machinery.
-		\end{itemize}
-	\item \textbf{suppliers}
-		\begin{itemize}
-			\item The organizations that provides needed elements, product and service for the project.
-		\end{itemize}
-	\item \textbf{our company’s management}
-		\begin{itemize}
-			\item The group of people responsible for controlling and organizing in our company.
-		\end{itemize}
-	\item \textbf{client's management}
-		\begin{itemize}
-			\item The group of people responsible for controlling and organizing in the client's company.
-		\end{itemize}	
-\end{list}
+\begin{description}[align=right,leftmargin=6cm,style=multiline]
+	\item[authorities]
+		The experts of aoutonomous vehicles with official
+		responsibility for a particular area of activity
+
+	\item[office workers]
+			The passengers of the aoutonomous buses.
+
+	\item[Health\&Safety Department]
+			A group at our company responsible for analyzing the
+			potential health and safety risks of our products and
+			forming rules and regulations to make sure these risks
+			are averted.
+
+	\item[project sponsor]
+			An organization that contribute financially to the
+			project.
+
+	\item[project manager]
+			He/she has the responsibility of the planning,
+			procurement and execution of the project. He/she
+			responsible for accomplishing the project objectives.
+
+	\item[architects]
+			The persons who design new architectures and they
+			responsible for achieving a particular plan or aim.
+
+	\item[autonomous vehicle control engineers]
+			They are capable of developing new technologies and
+			handling problems of autonomous vehicle transport
+			systems taking into account environmental and energy
+			management requirements.
+
+	\item[mechanical engineers]
+			They work with automotive mechanical systems, design
+			power-producing machines.
+
+	\item[mobile application developers]
+			They create, maintain and implement the source code to
+			develop mobile apps that meet the requirements of the
+			clients using the computer programming languages.
+
+	\item[terminal developers]
+			% TODO one sentence a One sentence about their duty. I
+			% don't really know right now, sorry.
+
+	\item[system testers]
+			They create testing plans for the system and identify
+			what parts of a system can be tested using automated
+			tools and what require manual testing. They also
+			accomplish the tests.
+
+	\item[mechanics]
+			The persons who repairs and maintains machinery.
+
+	\item[suppliers]
+			The organizations that provides needed elements, product
+			and service for the project.
+
+	\item[our company’s management]
+			The group of people responsible for controlling and
+			organizing in our company.
+
+	\item[client's management]
+			The group of people responsible for controlling and
+			organizing in the client's company.
+\end{description}
 
 
 
@@ -150,52 +190,8 @@
 \section{Work journal}
 
 % TODO copy from Sheets when done
-\begin{tabular}{|c|c|c|c|}
-\hline 
-\textbf{Name} & \textbf{Date} & \textbf{Work hours} & \textbf{Activity} \\ 
-\hline 
-Szilágyi Borbála \\ Péter Bertalan Zoltán & 2019.09.26. & 2 & Discuss the project \\ 
-\hline
-Gálik Annamária & 2019.09.26. & 0.5 & Collect words for the glossary \\ 
-\hline 
-Szilágyi Borbála & 2019.09.26. & 1 & Collect stakeholders \\ 
-\hline 
-Péter Bertalan Zoltán & 2019.09.26. & 0.5 & Collect the contexts \\ 
-\hline 
-Szilágyi Borbála & 2019.09.27. & 1 & Write the requirements \\ 
-\hline 
-Gálik Annamária & 2019.09.27. & 1 & Write the definition in the glossary \\ 
-\hline 
-Péter Bertalan Zoltán & 2019.09.27. & 1.5 & Correction in the glossary, Write requirements, Review \\ 
-\hline 
-Gálik Annamária & 2019.09.27. & 1.5 & Correction in the glossary \\ 
-\hline 
-Szilágyi Borbála & 2019.09.27. & 0.5 & Correction  \\ 
-\hline 
-Gálik Annamária & 2019.09.28. & 1 &  Correction in the glossary  \\ 
-\hline 
-Szilágyi Borbála & 2019.09.28. & 1 &  Write the exact plan of the buses' transport.\\ 
-\hline 
-Péter Bertalan Zoltán & 2019.09.28. & 1 & Clarification of requirements. Review. \\ 
-\hline 
-Péter Bertalan Zoltán & 2019.09.28. & 0.5 & Clarification of requirements. Review. \\ 
-\hline 
-Szilágyi Borbála & 2019.09.28. & 1 &  Make the stakeholder use case. \\ 
-\hline 
-Szilágyi Borbála & 2019.09.28. & 0.5 & Functional requirements in MagicDraw. \\ 
-\hline 
-Gálik Annamária & 2019.09.29. & 1 & Write the glossary in MagicDraw. \\ 
-\hline 
-Szilágyi Borbála & 2019.09.29. & • & Usability, Security and Dependability diagrams in MagicDraw. \\ 
-\hline 
-Péter Bertalan Zoltán & 2019.09.29. & 2 &  Safety, performance and supportability diagrams in MagicDraw. \\ 
-\hline 
-Péter Bertalan Zoltán & 2019.09.29. & 1 & Preparation of the documentation in LaTeX. \\ 
-\hline 
-Gálik Annamária & 2019.09.29. & 2 & 1., 2. and 6. points of the documentation in LaTeX. \\ 
-\hline \\
-\end{tabular} 
+
 \clearpage
-\printglossaries
+\printglossaries % TODO does not work
 
 \end{document}
