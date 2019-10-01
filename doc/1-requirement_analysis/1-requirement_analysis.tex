@@ -65,92 +65,79 @@
 % -- Berci
 
 Our job was to do the preparation of installing \gls{driverless}
-\gls{autonomous} \gls{vehicle}s to offer \gls{transportation} service to the
-workers at a private office park.
+\gls{autonomous} \gls{vehicle}s in order to offer \gls{transportation} service
+to the workers at a private office park.
 
-We had to identify the \gls{stakeholder}s and model the context of the planned
+We had to identify the \gls{stakeholder}s, model the context of the planned
 system, and also to define the high-level requirements, necessary functions and
 use cases. We also documented non-trivial terms in a glossary as well as the
-ambiguous or contradicting requirements so that we can contact the customer with
-well-defined questions.
+ambiguous or contradicting requirements so as to be able to contact the customer
+with well-defined questions.
 
-We had to study the appendices, then we had to look through and discuss the
-questions that had arisen.
+We were to study the appendices, which arose some new questions that we
+discussed.
 
 
 % ------------------------------------------------------------------------------
-\section{Ambiguous requirements}
+\section{Ambiguities and our ideas}
 
 \begin{enumerate}
 	\item Interpretation of ‘make sure the buses are not overcrowded’
-
-		Ideas:
 
 		\textit{The buses form a network that is capable of
 			intelligently deciding which bus to ‘send’ where, in
 			accordance to the number of people \gls{request}ing the
 			bus at the \gls{terminal}s, what \gls{route}s other
-			buses have planned and how many people are on certain
-			buses. This approach is to solve the problem mentioned
-			above; overcrowding can be avoided provided there is a
+			buses have planned, and how many people are on certain
+			buses. Overcrowding can be avoided provided there is a
 			sufficient number of \gls{vehicle}s at our disposal and
 			the buses can \gls{autonomous}ly decide their
 			\gls{route}s in such a way that no single bus is full
-			while others are almost empty. Essentially, we could
+			while others are on low capacity. Essentially, we could
 			balance the number of passengers on the buses.}
 
-	\item What does a \gls{request} contain of? Who can publish a
+	\item What does a \gls{request} contain? Who can publish a
 	      \gls{request}?
 
-		Ideas:
-
-		\textit{The \gls{request} must contains the indentification of
+		\textit{The \gls{request} must contain the indentification of
 			the worker who ordered the bus, the number of passengers
 			who will travel, the starting point, the destination,
-			and the planned time of the trip. To publish a
-			\gls{request} needed an authentication to avoid
-			un\gls{authorized} access.}
+			and the planned time of the trip. Requests can be made
+			from the installed terminals by anybody—this does not
+			introduce a problem, since the system operates inside a
+			closed-off, private office park—but in order to use
+			the \gls{mobileApplication}, registration is needed.}
 
-	\item Can the passenger change his/her destination during the
-	      \gls{transportation}?
+	\item Can passengers change their destination during the trip?
 
-		Ideas:
-
-		\textit{No, but the passengers can get off the \gls{vehicle}
-			before their former destination if they indicate their
-			intention in time.}
+		\textit{Passengers should not be able to select new
+			destionations after they already boarded on of the
+			buses. Should a passenger need to abort their current
+			trip and travel somewhere else for whatever reason, they
+			are urged to get off anywhere where the bus would
+			normally stop and \gls{request} a new lift from there.}
 \end{enumerate}
 
 
 % ------------------------------------------------------------------------------
 \section{List of stakeholders}
 
-% Ancsi: Erre van egy külön environment: description
-%
-% Úgy működik, hogy a \item-ek után írsz egy [] közé valamit, ami a magyarázandó
-% szó, majd utána írod is a magyarázatot. pl:
-%
-% \begin{description}
-% 	\item[HTTP] HyperText Transfer Protocol
-%	\item[MPLS] MultiProtocol Label Switching
-% 	\item[SMTP] Simple Mail Transfer Protocol
-% \end{description}
-%
-% (itt ennél kicsit mást használtam, hogy még szebb legyen, de az egy package
-% által működik csak (enumitem))
-%
-% Persze lehet szebbben formázni, ahogy lent tettem, mert hosszúak a sorok.
-%
-% -- Berci
+\begin{figure}
+	\centering
+	\includegraphics[width=\textwidth]{stakeholders.jpg} % TODO ugly
+	\caption{Diagram of stakeholders}%
+	\label{fig:stakeholders}
+\end{figure}
 
-\begin{description}[align=right,leftmargin=6cm,style=multiline]
+See~\cref{fig:stakeholders} for a diagram describing the relations of these
+\gls{stakeholder}s.
+
+\begin{description}[style=multiline,align=right,leftmargin=6cm]
 	\item[authorities]
-		Experts of \gls{autonomous} \gls{vehicle}s with official
-		responsibility for a particular area of activity
-		% TODO ez szerintem nem ez, hanem a hatóságok -- Berci
+		A body of persons having power to make and enforce law.
 
 	\item[office workers]
-		The people working at the client's company and the main users of
+		The people working at the client's company; the main users of
 		the \gls{autonomous} buses.
 
 	\item[Health\&Safety Department]
@@ -160,18 +147,20 @@ questions that had arisen.
 		are averted.
 
 	\item[project sponsor]
-		An organization that contributes financially to the project.
+		An single person who holds overall responsibilty for the
+		project's success. They are \emph{not} to manage the day-to-day
+		operations but to promote the project and provide the necessary
+		resources.
 
 	\item[project manager]
-		A person who takes responsibility for the planning, preparation
+		A person who takes responsibility for the planning, preparation,
 		and execution of the project. They are responsible for
 		accomplishing the project's objectives.
 
 	\item[architects]
-		The people who design new architectures. They are responsible
-		for achieving a particular plan or aim.
-		% TODO az architect ilyen építész, nem általános emberke
-		% (gondolom itt csak a buszmegállóra vontakozik)
+		People skilled in the area of planning and various physical
+		structures. Our waiting areas near the office buildings shall be
+		planned by them.
 
 	\item[\gls{autonomous} \gls{vehicle} control engineers]
 		They are capable of developing new technologies and handling
@@ -180,29 +169,27 @@ questions that had arisen.
 		requirements.
 
 	\item[mechanical engineers]
-		They work with automotive mechanical systems, and design
-		power-producing machines.
-		% TODO power-producing machines?
+		Engineers specialized in working with automotive mechanical
+		systems, such as the buses themselves.
 
 	\item[\gls{mobileApplication} developers]
 		They create, maintain and implement \gls{mobileApplication}s
 		that meet the requirements of the clients.
 
 	\item[\gls{terminal} developers]
-		% TODO one sentence a One sentence about their duty. I don't
-		% really know right now, sorry.
+		% FIXME what is this
 
 	\item[system testers]
-		They create testing plans for the system and identify what parts
-		of a system can be tested using \gls{automated} tools and what
-		require manual testing. This team is also responsible for
-		running the tests.
+		A group that creates testing plans for the system and identifies
+		what parts of a system can be tested using \gls{automated} tools
+		and what require manual testing. This team is also responsible
+		for running the tests.
 
 	\item[mechanics]
 		People who repair and maintain machinery.
 
 	\item[suppliers]
-		The organizations that provide needed elements, products and
+		The organizations that provide needed elements, products, and
 		services for the project.
 
 	\item[our company’s management]
@@ -339,7 +326,7 @@ representation of these requirements.
 
 \subsection{Security requirements}
 \begin{tabularx}{\textwidth}{p{.75cm} X}
-	SE1 & The system must provide control access only \gls{authorized}
+	SE1 & The system must provide control access only to \gls{authorized}
 	      personnel. \\
 
 	SE2 & The \gls{mobileApplication} must protect the personal information
@@ -383,7 +370,7 @@ representation of these requirements.
 
 \begin{figure}
 	\centering
-	\includegraphics[width=\textwidth]{req-usability.jpg}
+	\includegraphics[width=\textwidth]{req-usability.jpg} % FIXME ugly
 	\caption{Usability requirement diagram}%
 	\label{fig:req-usability}
 \end{figure}
@@ -398,22 +385,22 @@ representation of these requirements.
 		system to make a \gls{request} for a lift. Only registered users
 		may make \gls{request}s this way. The \gls{request} includes the
 		user's identification, the date and time of the travel, their
-		starting and destination point as well as the number of people
+		starting and destination point, as well as the number of people
 		who wish to travel in case of a group \gls{request}.
 
 	\item[Make \gls{request} via \gls{terminal}]
 		Use the installed \gls{terminal}s in front of every office
 		building to make a tranportation \gls{request}. When making a
-		\gls{request} this way, only the travel destionation can (and
-		must) be specified.
+		\gls{request} this way, only the travel destionation can—and
+		must—be specified.
 
 	\item[Monitor system status]
-		Periodically check if the entire system is operating as expected
-		— ie an appropriate number of buses is in operation (with regard
-		to the number of users at the moment), the buses calculate
-		\gls{route}s correctly and do not develop any faults. It must
-		also be checked that the platforms for making \gls{request}s can
-		be published are fully operational.
+		Periodically check if the entire system is operating as
+		expected—ie an appropriate number of buses is in operation (with
+		regard to the number of users at the moment), the buses
+		calculate \gls{route}s correctly and do not develop any faults.
+		It must also be checked that the platforms for making
+		\gls{request}s are fully operational.
 
 	\item[Monitor bus condition]
 		Keep watch on the various parameters of a bus to make sure it is
@@ -427,7 +414,7 @@ representation of these requirements.
 		Ensure the buses cause harm to neither their environment nor
 		their passengers. This is largely accomplished by collecting
 		data from a variety of \gls{sensor}s and reacting in every
-		situation intelligently and handling unexpected occurrences.
+		situation intelligently, and handling unexpected occurrences.
 
 	\item[Drive bus]
 		Control the movement of a bus in order to fulfill the main
@@ -442,7 +429,7 @@ representation of these requirements.
 
 	\item[Select \gls{route}]
 		The act of choosing a path between two locations in the office
-		park, preferably one that is the shortest possible.
+		park, preferably the shortest.
 
 	\item[Transport passengers]
 		Get passengers to their desired destinations.
