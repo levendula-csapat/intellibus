@@ -20,6 +20,9 @@
 	\include{glossary}
 \usepackage{enumitem}                     % enhanced enumerations
 \usepackage{tabularx}                     % enhanced tables
+\usepackage{float}                        % 'H' figure placement
+\usepackage{rotating}                     % sidewaysfigure
+\usepackage[noabbrev]{cleveref}           % clever references
 
 %%% OTHER %%%
 \setlength\headheight{22.3725pt}
@@ -51,6 +54,7 @@
 \tableofcontents
 \clearpage
 
+% ------------------------------------------------------------------------------
 \section{Our task}
 
 % Ancsi: Nem kell a dolgokat {} közé tenni, csak ritkán (akkor, ha alkalmazni
@@ -74,6 +78,7 @@ We had to study the appendices, then we had to look through and discuss the
 questions that had arisen.
 
 
+% ------------------------------------------------------------------------------
 \section{Ambiguous requirements}
 
 \begin{enumerate}
@@ -117,6 +122,7 @@ questions that had arisen.
 \end{enumerate}
 
 
+% ------------------------------------------------------------------------------
 \section{List of stakeholders}
 
 % Ancsi: Erre van egy külön environment: description
@@ -208,12 +214,21 @@ questions that had arisen.
 
 
 
+% ------------------------------------------------------------------------------
 \section{System context}
 
-% TODO diagram
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{context.jpg}
+	\caption{System Context diagram}
+\end{figure}
 
 
+% ------------------------------------------------------------------------------
 \section{Requirements}
+
+See figures~\crefrange{fig:req-functional}{fig:req-usability} for a visual
+representation of these requirements.
 
 \subsection{Functional requirements}
 \begin{tabularx}{\textwidth}{p{.75cm} X}
@@ -244,7 +259,12 @@ questions that had arisen.
 	         major office building. \\
 \end{tabularx}
 
-% TODO: kep beszurasa a diagramrol
+\begin{sidewaysfigure}
+	\centering
+	\includegraphics[width=\textwidth]{req-functional.jpg}
+	\caption{Functional requirement diagram}%
+	\label{fig:req-functional}
+\end{sidewaysfigure}
 
 \subsection{Performance requirements}
 \begin{tabularx}{\textwidth}{p{.75cm} X}
@@ -252,7 +272,12 @@ questions that had arisen.
         P2 & The buses shall operate between 7 AM and 10 PM every workday. \\
 \end{tabularx}
 
-% TODO: kep beszurasa a diagramrol
+\begin{figure}
+	\centering
+	\includegraphics[width=.75\textwidth]{req-performance.jpg}
+	\caption{Performance requirement diagram}%
+	\label{fig:req-performance}
+\end{figure}
 
 \subsection{Reliability requirements}
 \begin{tabularx}{\textwidth}{p{.75cm} X}
@@ -264,7 +289,12 @@ questions that had arisen.
         R3 & The buses should balance their load evenly if possible. \\
 \end{tabularx}
 
-% TODO: kep beszurasa a diagramrol
+\begin{figure}
+	\centering
+	\includegraphics[width=.75\textwidth]{req-reliability.jpg}
+	\caption{Reliability requirement diagram}%
+	\label{fig:req-reliability}
+\end{figure}
 
 \subsection{Safety requirements}
 \begin{tabularx}{\textwidth}{p{.75cm} X}
@@ -300,7 +330,12 @@ questions that had arisen.
 	       behaviour of cyclists and pedestrians. \\
 \end{tabularx}
 
-% TODO: kep beszurasa a diagramrol
+\begin{sidewaysfigure}
+	\centering
+	\includegraphics[width=\textwidth]{req-safety.jpg}
+	\caption{Safety requirement diagram}%
+	\label{fig:req-safety}
+\end{sidewaysfigure}
 
 \subsection{Security requirements}
 \begin{tabularx}{\textwidth}{p{.75cm} X}
@@ -311,7 +346,12 @@ questions that had arisen.
 	      of the users. \\
 \end{tabularx}
 
-% TODO: kep beszurasa a diagramrol
+\begin{figure}
+	\centering
+	\includegraphics[width=.75\textwidth]{req-security.jpg}
+	\caption{Security requirement diagram}%
+	\label{fig:req-security}
+\end{figure}
 
 \subsection{Supportability requirements}
 \begin{tabularx}{\textwidth}{p{.75cm} X}
@@ -324,7 +364,12 @@ questions that had arisen.
 	      \gls{technicalProblem}. \\
 \end{tabularx}
 
-% TODO: kep beszurasa a diagramrol
+\begin{figure}
+	\centering
+	\includegraphics[width=.75\textwidth]{req-supportability.jpg}
+	\caption{Supportability requirement diagram}%
+	\label{fig:req-supportability}
+\end{figure}
 
 \subsection{Usability requirements}
 \begin{tabularx}{\textwidth}{p{.75cm} X}
@@ -336,9 +381,15 @@ questions that had arisen.
 	     efficient. \\
 \end{tabularx}
 
-% TODO: kep beszurasa a diagramrol
+\begin{figure}
+	\centering
+	\includegraphics[width=\textwidth]{req-usability.jpg}
+	\caption{Usability requirement diagram}%
+	\label{fig:req-usability}
+\end{figure}
 
 
+% ------------------------------------------------------------------------------
 \section{Use cases}
 
 \begin{description}[style=nextline]
@@ -419,7 +470,14 @@ questions that had arisen.
 		Use the system to get from point A to point B.
 \end{description}
 
+\begin{figure}
+	\centering
+	\includegraphics[width=\textwidth]{uc-system}
+	\caption{System use cases}
+\end{figure}
 
+
+% ------------------------------------------------------------------------------
 \section{Work journal}
 
 % TODO copy from Sheets when done
