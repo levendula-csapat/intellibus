@@ -23,6 +23,7 @@
 \usepackage{float}                        % 'H' figure placement
 \usepackage{rotating}                     % sidewaysfigure
 \usepackage[noabbrev]{cleveref}           % clever references
+\usepackage{booktabs}                     % pretty tables
 
 %%% OTHER %%%
 \setlength\headheight{22.3725pt}
@@ -464,7 +465,60 @@ representation of these requirements.
 % ------------------------------------------------------------------------------
 \section{Work journal}
 
-% TODO copy from Sheets when done
+\begin{tabularx}{\textwidth}{l l l X}
+	\toprule
+	Team member & Date & Time\footnote{in hours} & Activity \\ \midrule
+
+	Borbála Szilágyi  & 2019-09-26 & 2   & meeting \\
+	Bertalan Z. Péter & 2019-09-26 & 2   & meeting \\
+	Annamária Gálik   & 2019-09-26 & 0.5 & collection of glossary items \\
+	Borbála Szilágyi  & 2019-09-26 & 1   & collection of stakeholders \\
+	Bertalan Z. Péter & 2019-09-26 & 0.5 & collection of system context
+	                                       items \\
+	Borbála Szilágyi  & 2019-09-27 & 1   & collection of requirements \\
+	Annamária Gálik   & 2019-09-27 & 1   & extension of glossary \\
+	Bertalan Z. Péter & 2019-09-27 & 1.5 & review, improvements, and a few
+	                                       additional requirements \\
+	Annamária Gálik   & 2019-09-27 & 1.5 & extension of glossary \\
+	Borbála Szilágyi  & 2019-09-27 & 0.5 & impovements \\
+	Annamária Gálik   & 2019-09-28 & 1   & extension of glossary,
+	                                       improvement of definitions \\
+	Borbála Szilágyi  & 2019-09-28 & 1   & detailed plan of the buses'
+	                                       operation \\
+	Bertalan Z. Péter & 2019-09-28 & 1   & improvement of requirements,
+	                                       minor fixes, review \\
+	Bertalan Z. Péter & 2019-09-28 & 0.5 & additional improvement and review
+	                                       of requirements \\
+	Borbála Szilágyi  & 2019-09-28 & 1   & diagram of stakeholders \\
+	Borbála Szilágyi  & 2019-09-28 & 0.5 & functional requirements in
+	                                       MagicDraw \\
+	Annamária Gálik   & 2019-09-29 & 1   & new glossary terms, glossary in
+	                                       MagicDraw \\
+	Borbála Szilágyi  & 2019-09-29 & 1   & usability, security, and
+					       dependability requirements in
+					       Magic Draw \\
+	Bertalan Z. Péter & 2019-09-29 & 2   & attempts at System Context
+					       diagram; safety, performance, and
+					       supportability requirements in
+					       MagicDraw \\
+	Bertalan Z. Péter & 2019-09-29 & 1   & LaTeX base document \\
+	Annamária Gálik   & 2019-09-29 & 2   & our task, stakeholder, and work
+					       journal in this document
+					       (initial) \\
+	Annamária Gálik   & 2019-09-30 & 2   & requirements and use cases in
+	                                       this document \\
+	Bertalan Z. Péter & 2019-09-30 & 1   & Context Diagram (final) \\
+	Annamária Gálik   & 2019-09-30 & 3   & list of use cases, list of
+					       requirements (also in this
+					       document) \\
+	Borbála Szilágyi  & 2019-09-30 & 2   & use case diagrams \\
+	Borbála Szilágyi  & 2019-09-30 & 0.5 & context diagam improvements \\
+	Bertalan Z. Péter & 2019-09-30 & 1   & descriptions of use cases \\
+	Borbála Szilágyi  & 2019-09-30 & 0.5 & extensions of requirements \\
+	Bertalan Z. Péter & 2019-10-01 & 1.5 & document formatting \\
+	Bertalan Z. Péter & 2019-10-01 & 0.5 & review of this very document \\
+	\bottomrule
+\end{tabularx}
 
 \clearpage
 \printglossaries
