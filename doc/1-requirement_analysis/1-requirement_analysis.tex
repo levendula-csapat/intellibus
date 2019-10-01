@@ -10,12 +10,15 @@
 \usepackage[a4paper,margin=3cm]{geometry} % page layout
 \usepackage[svgnames]{xcolor}             % rainbowssss *_*
 \usepackage{hyperref}                     % enhanced references (links)
-	\hypersetup{colorlinks=true,allcolors=NavyBlue}
+	\hypersetup{%
+		colorlinks=true,
+		allcolors=NavyBlue}
 \usepackage{fancyhdr}                     % headers & footers
 \usepackage{titling}                      % macros \thetitle, \theauthor
 \usepackage{graphicx}                     % enhanced graphics support
 	\graphicspath{{img/}}
 \usepackage[toc]{glossaries}              % glossaries (obv)
+	\setglossarystyle{altlisthypergroup}
 	\makeglossaries
 	\include{glossary}
 \usepackage{enumitem}                     % enhanced enumerations
@@ -216,7 +219,7 @@ See figures~\crefrange{fig:req-functional}{fig:req-usability} for a visual
 representation of these requirements.
 
 \subsection{Functional requirements}
-\begin{tabularx}{\textwidth}{p{.75cm} X}
+\begin{tabularx}{\textwidth}{p{.9cm} X}
 	F1     & The buses shall get around \gls{autonomous}ly inside the
 	         \gls{site}. \\
 
@@ -252,7 +255,7 @@ representation of these requirements.
 \end{sidewaysfigure}
 
 \subsection{Performance requirements}
-\begin{tabularx}{\textwidth}{p{.75cm} X}
+\begin{tabularx}{\textwidth}{p{.9cm} X}
         P1 & The waiting time for a bus may not exceed 30 minutes. \\
         P2 & The buses shall operate between 7 AM and 10 PM every workday. \\
 \end{tabularx}
@@ -265,7 +268,7 @@ representation of these requirements.
 \end{figure}
 
 \subsection{Reliability requirements}
-\begin{tabularx}{\textwidth}{p{.75cm} X}
+\begin{tabularx}{\textwidth}{p{.9cm} X}
 	R1 & The buses shall be able to complete at least 100 km on average
 	     between two interventions. \\
 
@@ -282,7 +285,7 @@ representation of these requirements.
 \end{figure}
 
 \subsection{Safety requirements}
-\begin{tabularx}{\textwidth}{p{.75cm} X}
+\begin{tabularx}{\textwidth}{p{.9cm} X}
         SA01 & The buses must avoid causing any harm to the passengers. \\
 
 	SA02 & The system should have a database which contains actual
@@ -323,7 +326,7 @@ representation of these requirements.
 \end{sidewaysfigure}
 
 \subsection{Security requirements}
-\begin{tabularx}{\textwidth}{p{.75cm} X}
+\begin{tabularx}{\textwidth}{p{.9cm} X}
 	SE1 & The system must provide control access only to \gls{authorized}
 	      personnel. \\
 
@@ -339,7 +342,7 @@ representation of these requirements.
 \end{figure}
 
 \subsection{Supportability requirements}
-\begin{tabularx}{\textwidth}{p{.75cm} X}
+\begin{tabularx}{\textwidth}{p{.9cm} X}
 	SU1 & The buses should be able to notify the maintenance team and return
 	      to the \gls{station} \gls{autonomous}ly in case of a
 	      \gls{non-criticalFailure}. \\
@@ -357,7 +360,7 @@ representation of these requirements.
 \end{figure}
 
 \subsection{Usability requirements}
-\begin{tabularx}{\textwidth}{p{.75cm} X}
+\begin{tabularx}{\textwidth}{p{.9cm} X}
         U1 & The buses must be able to operate under any weather conditions. \\
 
         U2 & The bus \gls{station}s may be covered. \\
