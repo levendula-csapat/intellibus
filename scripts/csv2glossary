@@ -1,0 +1,41 @@
+#!/bin/sh
+
+###
+# csv2glossary - This rather fragile script converts a list of terms (glossary)
+#                to a format acceptible by the LaTeX package *glossaries*.
+#
+# The terms must be provided in the following format:
+#
+# "term1","definition1"
+# "term2","definition2"
+# ...
+#
+# The first line of the file is treated as a header and is ignored.
+#
+# If no arguments are given, csv2glossary reads from stdin.
+# If an argument is given, it is interpreted as a path to a file to read from.
+# The path `-` is also interpreted as stdin, however.
+###
+
+[ -n "$1" ] && file="$1" || file=-
+
+flag=false
+cat -- "$file" | while read line
+do
+	if [ $flag = false ]
+	then
+		flag=true
+		continue
+	fi
+
+	printf '\\newglossaryentry{%s}
+{%%
+	name={%s},
+	description={%s}
+}
+
+' \
+	"$(echo "$line" | cut -d , -f 1 | tr -d '"')" \
+	"$(echo "$line" | cut -d , -f 1 | tr -d '"')" \
+	"$(echo "$line" | cut -d , -f 2 | tr -d '"')"
+done
