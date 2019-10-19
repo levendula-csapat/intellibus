@@ -1,12 +1,19 @@
 # LaTeX
 *.aux
+*.log
+# LaTeX—lists
+*.toc
+*.lof
+*.lot
+# LaTeX—glossary
 *.glg
 *.glo
 *.gls
 *.glsdefs
 *.ist
-*.log
+# LaTeX—out
+*.out
 *.pdf
-*.toc
 *.fdb_latexmk
 *.fls
+*.html

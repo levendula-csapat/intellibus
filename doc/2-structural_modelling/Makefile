@@ -1,4 +1,4 @@
-ASSIGNMENT = 1-requirement_analysis
+ASSIGNMENT = 2-structural_modelling
 
 all: pdf
 
