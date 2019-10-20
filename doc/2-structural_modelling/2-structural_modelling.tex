@@ -1,4 +1,4 @@
-\documentclass[a4paper]{article}
+\documentclass[a4paper,draft]{article}
 
 %%%%%%%%%%%%%%%%
 %%% PREAMBLE %%%
@@ -62,37 +62,50 @@
 % ------------------------------------------------------------------------------
 \section{Our task}
 
-Our job was to design the crutial functional components including a couple of
-subsystems.
+Our job was to design crucial functional components including a couple of
+subsystems for the IntelliBus system.
 
-First, we had to complete the BDD of the {Automated Passenger Counter}
-functionality with traceability relationships between the requirements and
-design artifacts. Our next task was the bottom-up design of an {Intelligent
-Intersection Control} subsystem. We realized the junction J42 using the
-conponents defined in the vendor catalog BDD. Finally, we created the top-down
+First, we had to complete the Block Definition Diagram of the {Automated
+Passenger Counter} functionality with traceability relationships between
+the requirements and design artefacts.
+
+Our next task was the bottom-up design of an {Intelligent Intersection Control}
+subsystem. We realized a specific junction—named J42— using the conponents
+defined in the vendor catalog (which was given to us in the form of a Block
+Definition Diagram).
+
+Finally, we created the top-down
 design of the {Traffic and Route Planning} functionality. For this task we used
-information and components provided by the two previous tasks. After designing
-the components we specified well-formedness constraints for the system model.
+information and components provided by the two previous tasks.
+
+% TODO uncomment ha csináltuk
+%After designing
+%the components we specified well-formedness constraints for the system model.
+
+
 % ------------------------------------------------------------------------------
 \section{Ambiguities and our ideas}
 
 % TODO
 \begin{enumerate}
-	\item The layout of the T-intersection
+	\item The layout of the T-intersection (J42)
+
 		\textit{Each of the three roads has one incoming and one
-			outgoing lane and there are three pedestrian crossing -
-			one for each road.}
+			outgoing lane and there are three pedestrian
+			crossings—one for each road.}
 \end{enumerate}
+
 
 % ------------------------------------------------------------------------------
 \section{Solutions}
 
-\subsection{Extension of APC}
+\subsection{Extension of Automatic Passenger Counter (APC)}
 
 \begin{sidewaysfigure}
 	\centering
 	\includegraphics[width=\textwidth]{APCdiagram.jpg}
-	\caption{High-level component definitions of Automated Passenger Counting diagram}%
+	\caption{High-level component definitions of the Automated Passenger
+		Counter}%
 	\label{fig:APCdiagram}
 \end{sidewaysfigure}
 
@@ -106,9 +119,9 @@ the components we specified well-formedness constraints for the system model.
 % TODO
 
 % - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-\subsection{Well-formedness constraints (iMSc)}
+%\subsection{Well-formedness constraints (iMSc)}
 
-% TODO?
+% TODO ?
 
 
 % ------------------------------------------------------------------------------
