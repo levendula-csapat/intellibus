@@ -18,6 +18,7 @@ clean:
 	rm -f *.{html,pdf}
 	rm -f *.{aux,log,out}
 	rm -f *.{glg,glo,gls,glsdefs}
+	rm -f *.toc
 	rm -f *.lof
 	rm -f *.ist
 
