@@ -1,4 +1,4 @@
-\documentclass[a4paper,draft]{article}
+\documentclass[a4paper]{article}
 
 %%%%%%%%%%%%%%%%
 %%% PREAMBLE %%%
@@ -27,6 +27,8 @@
 \usepackage{rotating}                     % sidewaysfigure
 \usepackage[noabbrev]{cleveref}           % clever references
 \usepackage{booktabs}                     % pretty tables
+\usepackage{tikz}                         % drawings
+	\usetikzlibrary{shapes}
 
 %%% OTHER %%%
 \setlength\headheight{22.3725pt}
@@ -65,22 +67,24 @@
 Our job was to design crucial functional components including a couple of
 subsystems for the IntelliBus system.
 
-First, we had to complete the Block Definition Diagram of the {Automated
-Passenger Counter} functionality with traceability relationships between
-the requirements and design artefacts.
+First, we had to complete the Block Definition Diagram of the \emph{Automated
+Passenger Counting} functionality with traceability relationships between the
+requirements and design artefacts. Documentation for this subtask can be found
+at \cref{subsec:apc}.
 
-Our next task was the bottom-up design of an {Intelligent Intersection Control}
-subsystem. We realized a specific junction—named J42— using the conponents
-defined in the vendor catalog (which was given to us in the form of a Block
-Definition Diagram).
+Our next task was the bottom-up design of an \emph{Intelligent Intersection
+Control} subsystem. We realized a specific junction—named J42— using the
+conponents defined in the vendor catalog (which was given to us in the form of a
+Block Definition Diagram). See our solution at \cref{subsec:j42}.
 
-Finally, we created the top-down
-design of the {Traffic and Route Planning} functionality. For this task we used
-information and components provided by the two previous tasks.
+Finally, we created the top-down design of the \emph{Traffic and Route Planning}
+functionality. For this task we used information and components provided by the
+two previous tasks. See \cref{subsec:trp}.
 
 % TODO uncomment ha csináltuk
 %After designing
 %the components we specified well-formedness constraints for the system model.
+
 
 
 % ------------------------------------------------------------------------------
@@ -96,27 +100,184 @@ information and components provided by the two previous tasks.
 \end{enumerate}
 
 
+
 % ------------------------------------------------------------------------------
 \section{Solutions}
 
-\subsection{Extension of Automatic Passenger Counter (APC)}
+\subsection{Traceability links for the Automated Passenger Counting (APC)}%
+\label{subsec:apc}
+
+As per requirement \texttt{REQ1.1}, the buses must monitor the number of
+passengers boarding and alighting. This is realized by the
+\texttt{PassengerCounter} component which is to be installed into the doors of
+every vehicle. There is an extra dependability requirement for this counting
+functionality, which of course also must be safisfied by the
+\texttt{PassengerCounter}.
+
+\sloppy
+The \texttt{PassengerCounter} is a special kind of \texttt{PassengerDetector}.
+Another kind is the \texttt{PassengerRecognizer}, which is responsible not for
+counting the passengers, but idefntifying them in order to keep track of who is
+where. Requirement \texttt{REQ1.2} expects this functionality, which is
+satisfied by this component. Similarly to \texttt{REQ1.1}, the dependability
+requirement is also satisfied by the recognizer component. Also, all buses have
+\texttt{PassengerRecognizer}s installed at every door.
+
+Lastly, as requirement \texttt{REQ1.3} states, data collected by passenger
+monitoring must be reported to a central system. This is done by the
+\texttt{PassengerMonitoringModule}, which is responsible for keeping track of
+passengers in general.
 
 \begin{sidewaysfigure}
 	\centering
-	\includegraphics[width=\textwidth]{APCdiagram.jpg}
+	\includegraphics[width=\textwidth]{bdd-apc.jpg}
 	\caption{High-level component definitions of the Automated Passenger
-		Counter}%
-	\label{fig:APCdiagram}
+		Counting}%
+	\label{fig:bdd-apc}
 \end{sidewaysfigure}
 
-\subsection{Intelligent Intersection Control}
-
-% TODO
 
 % - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-\subsection{Traffic and Route Planning}
+\subsection{Junction \#42 structure (IIC)}
+\label{subsec:j42}
 
-% TODO
+Junction 42 is a simple T-intersection, where a road coming from the west meets
+a north to south road. We imagined the intersection layout as seen on
+\cref{fig:j42}. Each of the three arms has a pedestrian crossing and a traffic
+light (represented as a red triangle in the figure).
+
+\begin{figure}[h]
+	\centering
+	\begin{tikzpicture}[%
+		scale=.4,
+		road/.style={very thick},%
+		zebra/.style={thick},%
+		lamp/.style={%
+			scale=.5,
+			draw,%
+			regular polygon,%
+			regular polygon sides=3,%
+			fill=red}
+		]
+
+		% west lane
+		\draw[road] (1,4)--(4,4);
+		\draw[road] (1,6)--(4,6);
+		% north–south lane
+		\draw[road] (4,9)--(4,6);
+		\draw[road] (4,4)--(4,1);
+		\draw[road] (6,9)--(6,1);
+		% west pedestrian crossing
+		\draw[zebra] (2.5,4.4)--(3.5,4.4);
+		\draw[zebra] (2.5,4.8)--(3.5,4.8);
+		\draw[zebra] (2.5,5.2)--(3.5,5.2);
+		\draw[zebra] (2.5,5.6)--(3.5,5.6);
+		% north pedestrian crossing
+		\draw[zebra] (4.4,7.5)--(4.4,6.5);
+		\draw[zebra] (4.8,7.5)--(4.8,6.5);
+		\draw[zebra] (5.2,7.5)--(5.2,6.5);
+		\draw[zebra] (5.6,7.5)--(5.6,6.5);
+		% south pedestrian crossing
+		\draw[zebra] (4.4,3.5)--(4.4,2.5);
+		\draw[zebra] (4.8,3.5)--(4.8,2.5);
+		\draw[zebra] (5.2,3.5)--(5.2,2.5);
+		\draw[zebra] (5.6,3.5)--(5.6,2.5);
+		% traffic lights
+		\node[lamp,rotate=-90] at (2,4.5) {};
+		\node[lamp] at (4.4,8) {};
+		\node[lamp,rotate=180] at (5.6,2) {};
+	\end{tikzpicture}
+	\caption{Our interpretation of J42's layout}%
+	\label{fig:j42}
+\end{figure}
+
+We have created the Internal Block Diagram seen on \cref{fig:ibd-j42}. We
+included the various control and information flows between the modules. The
+traffic light at each pedestrian crossing is influenced by the pedestrian call
+buttons. Each lane is also equipped with a vehicle detector.
+
+\begin{sidewaysfigure}
+	\centering
+	\includegraphics[width=\textwidth]{ibd-j42.jpg}
+	\caption{Internal Block Diagram for the J42 junction}
+	\label{fig:ibd-j42}
+\end{sidewaysfigure}
+
+
+% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+\subsection{Traffic and Route Planning}%
+\label{subsec:trp}
+
+As the most complicated task, we had to design the structural model of the
+Traffic and Route Planning functionality.
+
+Please see a Block Definition Diagram on \cref{fig:bdd-trp} which includes all
+components used. The functionality is described on the following four Internal
+Block Diagrams:
+
+\begin{enumerate}
+	\item \texttt{IntersectionControl}
+
+		Explains the relations and communication between the central
+		traffic management system and intersection control units. See
+		\cref{fig:ibd-intersectioncontrol}.
+
+	\item \texttt{Maintenance}
+
+		Communication between the autonomous vehicles and maintenance
+		manager components. See \cref{fig:ibd-maintenance}.
+
+	\item \texttt{RoutePlanning}
+
+		An functionality of crucial importance is the ability to devise
+		routes based on various factors. The
+		\texttt{ServiceRoutePlanner} is largely responsible for this.
+		Find the diagram on \cref{fig:ibd-routeplanning}.
+
+	\item \texttt{TrafficManagement}
+
+		Explains the internal structure of the central traffic
+		management component and how it communicates with sensors and
+		vehicles. See \cref{fig:ibd-trafficmanagement}.
+\end{enumerate}
+
+\begin{sidewaysfigure}
+	\centering
+	\includegraphics[width=\textwidth]{bdd-trp.jpg}
+	\caption{Block Definition Diagram for the Traffic and Route Planning
+		functionality}%
+	\label{fig:bdd-trp}
+\end{sidewaysfigure}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\textwidth]{ibd-intersectioncontrol.jpg}
+	\caption{Internal Block Diagram for the intersection control
+		functionality}%
+	\label{fig:ibd-intersectioncontrol}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\textwidth]{ibd-maintenance.jpg}
+	\caption{Internal Block Diagram for the maintenance functionality}%
+	\label{fig:ibd-maintenance}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\textwidth]{ibd-routeplanning.jpg}
+	\caption{Internal Block Diagram for the route planning functionality}%
+	\label{fig:ibd-routeplanning}
+\end{figure}
+
+\begin{sidewaysfigure}
+	\centering
+	\includegraphics[width=\textwidth]{ibd-trafficmanagement.jpg}
+	\caption{Internal Block Diagram for the traffic management
+		functionality}%
+	\label{fig:ibd-trafficmanagement}
+\end{sidewaysfigure}
 
 % - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 %\subsection{Well-formedness constraints (iMSc)}
@@ -129,12 +290,22 @@ information and components provided by the two previous tasks.
 
 \begin{tabularx}{\textwidth}{l l l X}
 	\toprule
-	Team member & Date & Time\footnote{in hours} & Activity \\ \midrule
-	% TODO
+	Team member & Date       & Time\footnote{in hours} & Activity              \\ \midrule
+	everybody   & 2019-10-08 & 1.5                     & meeting               \\
+	Szilágyi    & 2019-10-14 & 1                       & APC in Magic Draw     \\
+	Szilágyi    & 2019-10-14 & 1                       & TRP BDD in Magic Draw \\
+	Gálik       & 2019-10-14 & 1                       & glossary              \\
+	Péter       & 2019-10-17 & 0.5                     & IIC BDD               \\
+	Péter       & 2019-10-17 & 0.5                     & IIC IBD               \\
+	Péter       & 2019-10-17 & 0.5                     & TRP BDD in Magic Draw \\
+	Szilágyi    & 2019-10-18 & 0.5                     & TRP BDD in Magic Draw \\
+	Gálik       & 2019-10-19 & 1.5                     & TRP BDD in Magic Draw \\
+	Gálik       & 2019-10-19 & 1                       & glossary \\
 	\bottomrule
 \end{tabularx}
 
 \clearpage
+\glsaddall
 \printglossaries
 
 \end{document}
