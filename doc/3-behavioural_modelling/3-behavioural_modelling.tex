@@ -1,0 +1,109 @@
+\documentclass[a4paper]{article}
+
+%%%%%%%%%%%%%%%%
+%%% PREAMBLE %%%
+%%%%%%%%%%%%%%%%
+
+%%% PACKAGES %%%
+\usepackage{fontspec}                     % set fonts
+	\setmainfont{Junicode}
+\usepackage[a4paper,margin=3cm]{geometry} % page layout
+\usepackage[svgnames]{xcolor}             % rainbowssss *_*
+\usepackage{hyperref}                     % enhanced references (links)
+	\hypersetup{%
+		colorlinks=true,
+		allcolors=NavyBlue}
+\usepackage{fancyhdr}                     % headers & footers
+\usepackage{titling}                      % macros \thetitle, \theauthor
+\usepackage{graphicx}                     % enhanced graphics support
+	\graphicspath{{img/}}
+\usepackage[toc]{glossaries}              % glossaries (obv)
+	\setglossarystyle{altlisthypergroup}
+	\makeglossaries
+	\include{glossary}
+\usepackage{enumitem}                     % enhanced enumerations
+\usepackage{tabularx}                     % enhanced tables
+\usepackage{float}                        % 'H' figure placement
+\usepackage{rotating}                     % sidewaysfigure
+\usepackage[noabbrev]{cleveref}           % clever references
+\usepackage{booktabs}                     % pretty tables
+\usepackage{tikz}                         % drawings
+	\usetikzlibrary{shapes}
+
+%%% OTHER %%%
+\setlength\headheight{22.3725pt}
+
+%%% META %%%
+\title{Assignment \#3 \\ Behavioural Modelling}
+\author{Levendula}
+\date{\today}
+
+%%% ADDITIONAL PACKAGE CONFIG %%%
+% fancyhdr
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\theauthor}
+\rhead{\thetitle}
+\lfoot{\today}
+\rfoot{\thepage}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%
+%%% BODY %%%
+%%%%%%%%%%%%
+
+\begin{document}
+
+\include{titlepage}
+
+\tableofcontents
+\listoffigures
+\clearpage
+
+
+
+% ------------------------------------------------------------------------------
+\section{Our task}
+
+% TODO
+
+
+
+% ------------------------------------------------------------------------------
+\section{Solutions}
+
+\subsection{The state machine representation of the door's behaviour}
+
+% TODO
+
+
+% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+\subsection{Activity diagram for the RFID scanner}
+
+% TODO
+
+
+% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+\subsection{Boarding contoller behaviour}
+
+% TODO
+
+
+
+% ------------------------------------------------------------------------------
+\section{Work journal}
+
+\begin{tabularx}{\textwidth}{l l l X}
+	\toprule
+	Team member & Date & Time\footnote{in hours} & Activity \\ \midrule
+
+	% TODO
+	\bottomrule
+\end{tabularx}
+
+%\clearpage
+%\glsaddall
+%\printglossaries
+
+\end{document}
