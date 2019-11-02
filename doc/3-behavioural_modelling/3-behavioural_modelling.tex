@@ -29,6 +29,7 @@
 \usepackage{booktabs}                     % pretty tables
 \usepackage{tikz}                         % drawings
 	\usetikzlibrary{shapes}
+\usepackage{subcaption}                   % side-by-side figures & subfigures
 
 %%% OTHER %%%
 \setlength\headheight{22.3725pt}
@@ -90,25 +91,42 @@ requirements.
 % - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 \subsection{The state machine representation of the door's behaviour}
 
-The door intutively has two states: \texttt{Opened} and \texttt{Closed}. We have
-added an additional \texttt{Closing} state to model the situation when the
-\gls{boardingController} has instructed the door to close, but it is blocked by
-something (eg a passenger). In this case, the door keeps trying to close until
-successful.
+The door intutively has two states: \texttt{Opened} and \texttt{Closed}.
 
 Successfully transitioning into the \texttt{Opened} and \texttt{Closed} states
 results in respective \texttt{Opened} and \texttt{Closed} signals being sent.
 
-For the sake of completeness, we also added transitions that loop back to the
-same state (for example upon receiving an \texttt{Open} signal in the
-\texttt{Opened} state).
+When transitioning out of the \texttt{Opened} state, it is possible that the
+door cannot close properly due to being blocked: in this case, a
+\texttt{Blocked} signal is emitted and the door continues being \texttt{Opened}.
 
-See \cref{fig:stm-door} for the state machine diagram.
+See \cref{fig:stm-DoorBehavior} for the state machine diagram.
+
+All the activities seen on the transitions can be seen on
+\cref{fig:stm-DoorBehavior-effects}.
 
 \begin{figure}[p]
 	\includegraphics[width=\textwidth]{stm-DoorBehavior.jpg}
 	\caption{State machine diagram modelling the door's behaviour}%
-	\label{fig:stm-door}
+	\label{fig:stm-DoorBehavior}
+\end{figure}
+
+\begin{figure}
+	\begin{subfigure}{.33\textwidth}
+		\includegraphics[width=\textwidth]
+		{stm-DoorBehavior-SendOpenedActivity.jpg}
+	\end{subfigure}
+	\begin{subfigure}{.33\textwidth}
+		\includegraphics[width=\textwidth]
+		{stm-DoorBehavior-SendClosedActivity.jpg}
+	\end{subfigure}
+	\begin{subfigure}{.33\textwidth}
+		\includegraphics[width=\textwidth]
+		{stm-DoorBehavior-SendBlockedActivity.jpg}
+	\end{subfigure}
+	\caption{Activity diagrams for the effects seen in
+		\cref{fig:stm-DoorBehavior}}%
+	\label{fig:stm-DoorBehavior-effects}
 \end{figure}
 
 
