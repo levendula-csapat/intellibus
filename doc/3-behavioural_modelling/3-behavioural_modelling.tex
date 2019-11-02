@@ -66,16 +66,50 @@
 % ------------------------------------------------------------------------------
 \section{Our task}
 
-% TODO
+We were assigned to model the behaviour of some components related to boarding
+using state machine and activity diagrams.
 
+First, we modelled the operation of the bus's doors by means of a state machine
+diagram. The behaviour of the doors was already defined in some specific cases
+on sequence diagrams, which we made sure to conform to.
+
+Secondly, we created an activity diagram describing the \gls{RFIDScanner} based
+on the textual user manual.
+
+As a final task, we made another state machine diagram which models the
+behaviour of the \gls{boardingController} based on the other components'
+behaviour—diagrams for some components have been given to us, such as the
+\gls{turnstile}'s state machine diagram. We made sure to adhere to the critical
+requirements.
 
 
 % ------------------------------------------------------------------------------
 \section{Solutions}
 
+
+% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 \subsection{The state machine representation of the door's behaviour}
 
-% TODO
+The door intutively has two states: \texttt{Opened} and \texttt{Closed}. We have
+added an additional \texttt{Closing} state to model the situation when the
+\gls{boardingController} has instructed the door to close, but it is blocked by
+something (eg a passenger). In this case, the door keeps trying to close until
+successful.
+
+Successfully transitioning into the \texttt{Opened} and \texttt{Closed} states
+results in respective \texttt{Opened} and \texttt{Closed} signals being sent.
+
+For the sake of completeness, we also added transitions that loop back to the
+same state (for example upon receiving an \texttt{Open} signal in the
+\texttt{Opened} state).
+
+See \cref{fig:stm-door} for the state machine diagram.
+
+\begin{figure}[p]
+	\includegraphics[width=\textwidth]{stm-DoorBehavior.jpg}
+	\caption{State machine diagram modelling the door's behaviour}%
+	\label{fig:stm-door}
+\end{figure}
 
 
 % - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
