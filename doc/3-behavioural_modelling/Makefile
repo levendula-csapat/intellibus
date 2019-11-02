@@ -4,6 +4,8 @@ all: pdf
 
 pdf:
 	@xelatex ${ASSIGNMENT}.tex
+	@makeglossaries ${ASSIGNMENT}
+	@xelatex ${ASSIGNMENT}.tex
 
 # XXX: do NOT modify HTML with sed! I am just lazy… -- bertalanp99
 html:
