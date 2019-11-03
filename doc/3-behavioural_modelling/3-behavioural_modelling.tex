@@ -100,7 +100,8 @@ When transitioning out of the \texttt{Opened} state, it is possible that the
 door cannot close properly due to being blocked: in this case, a
 \texttt{Blocked} signal is emitted and the door continues being \texttt{Opened}.
 
-See \cref{fig:stm-DoorBehavior} for the state machine diagram.
+See \cref{fig:stm-DoorBehavior} for the state machine diagram. All the actions
+seen on the transitions can be seen on \cref{fig:stm-DoorBehavior-actions}.
 
 All the activities seen on the transitions can be seen on
 \cref{fig:stm-DoorBehavior-effects}.
@@ -124,9 +125,9 @@ All the activities seen on the transitions can be seen on
 		\includegraphics[width=\textwidth]
 		{stm-DoorBehavior-SendBlockedActivity.jpg}
 	\end{subfigure}
-	\caption{Activity diagrams for the effects seen in
+	\caption{Activity diagrams for the transition actions seen on
 		\cref{fig:stm-DoorBehavior}}%
-	\label{fig:stm-DoorBehavior-effects}
+	\label{fig:stm-DoorBehavior-actions}
 \end{figure}
 
 
