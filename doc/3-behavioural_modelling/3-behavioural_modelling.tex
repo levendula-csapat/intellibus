@@ -74,8 +74,8 @@ First, we modelled the operation of the bus's doors by means of a state machine
 diagram. The behaviour of the doors was already defined in some specific cases
 on sequence diagrams, which we made sure to conform to.
 
-Secondly, we created an activity diagram describing the \gls{RFIDScanner} based
-on the textual user manual.
+In the second task, we created an activity diagram describing the
+\gls{RFIDScanner} based on the textual user manual.
 
 As a final task, we made another state machine diagram which models the
 behaviour of the \gls{boardingController} based on the other components'
@@ -133,7 +133,37 @@ All the activities seen on the transitions can be seen on
 % - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 \subsection{Activity diagram for the RFID scanner}
 
-% TODO
+As described in the \gls{RFIDScanner}'s user manual, the scanner initially
+listens for a \texttt{Start} signal on its port. Upon receiving the signal, the
+scanning process begins.
+
+The process may end in three ways:
+
+\begin{enumerate}[label=\Alph*)]
+	\item The RFID raw data is read and processed within five seconds. In
+		this case, the results are given to the \gls{boardingController}
+		in a \texttt{SuccessfulScan} signal.
+
+	\item Reading and processing of the data cannot be completed within the
+		five second window. A \texttt{Timeout} signal is sent.
+
+	\item The scanner receives a \texttt{Stop} signal.
+\end{enumerate}
+
+In all three cases, the scanning process terminates and the scanner resumes
+listening for the \texttt{Start} signal.
+
+We have modelled this behaviour by enclosing the scanning process in an
+\emph{interruptible region} and specifying the flows leaving the ending actions
+that correspond to the possible cases as \emph{interrupting}.
+
+The activity diagram can be found on \cref{fig:act-ScannerBehavior}.
+
+\begin{figure}
+	\includegraphics[width=\textwidth]{act-ScannerBehavior.jpg}
+	\caption{Activity diagram of the \gls{RFIDScanner}'s behaviour}%
+	\label{fig:act-ScannerBehavior}
+\end{figure}
 
 
 % - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
