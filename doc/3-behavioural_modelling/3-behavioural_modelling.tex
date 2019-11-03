@@ -169,9 +169,96 @@ The activity diagram can be found on \cref{fig:act-ScannerBehavior}.
 % - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 \subsection{Boarding contoller behaviour}
 
-% TODO
+The \gls{boardingController} is the most complex component of the boarding
+equipment. Whereas the controlled components (\gls{turnstile},
+\gls{RFIDScanner}, door, and alarm) are relatively simple, this controller unit
+can be considered slightly intelligent. For example, when the door is blocked
+and cannot close, it simply sends a \texttt{Blocked} signal to the controller
+and stays opened. The component responsible for actually trying to close the
+door again is the \gls{boardingController}.
 
+\cref{fig:stm-ControllerBehavior} shows the state machine representation of the
+controller's behaviour. All the actions seen on the transitions are defined as
+activity digrams on \cref{fig:stm-ControllerBehavior-actions}.
 
+Initially, the controller does nothing and waits for the bus to stop and to
+receive the \texttt{StartBoarding} signal. When this happens, the boarding phase
+begins and an \texttt{Open} signal is sent to the door. The door responds with
+\texttt{Opened} signal when successfully opened. Then, the passenger is
+autorhized by means of the \gls{RFIDScanner}. In the event of the person being
+unathorized, the \gls{alarm} is turned on for five hundred milliseconds and the
+next—or potentially the same—RFID is scanned. Otherwise, if the person is
+allowed to board, the \gls{turnstile} is unlocked (by sending an \texttt{Unlock}
+signal) and the passenger has five seconds to get on the bus. After the
+\gls{turnstile} is rotated or the five second window expires, it is locked again
+and the contoller instructs the \gls{RFIDScanner} to start (ie read). In case
+the \gls{turnstile} cannot lock (this can happen when the \texttt{Lock} signal
+is received during rotating), it sends a \texttt{Fail} signal and the
+\gls{boardingController} attempts to lock it again every second until
+successful. The \gls{turnstile} communicates succesful locking by sending an
+\texttt{OK} signal.
+
+When the controller receives the \texttt{FinishBoarding} signal, it is to stop
+all boarding-related activities within ten seconds and send on \texttt{OK}
+signal. This includes locking the \gls{turnstile} and closing the door. Both of
+these must be successful (indicated by an \texttt{OK} signal from the
+\gls{turnstile} and a \texttt{Closed} signal from the door) for the controller
+to commence sending the \texttt{OK} signal and return to waiting for the
+\texttt{StartBoarding} signal. Additionally, the \gls{RFIDScanner}'s operation
+is aborted (by means of the \texttt{Stop} signal) and the \gls{alarm} is turned
+on for the duration of the finishing phase. Just before sending the \texttt{OK}
+signal, the alarm is turned off. In case these operations fail to complete
+within the allocated ten seconds, the controller turns off the alarm, sends an
+\texttt{Error} signal and shuts down.
+
+\textbf{As per the critical requirements, the door must not be opened before the
+	\texttt{StartBoarding} signal is received. We assumed that nothing
+	interferes with the operation of the doors (by for example sending an
+	\texttt{Open} signal to them) except the \gls{boardingController}.
+	Therefore the doors are in their initial \texttt{Closed} state when the
+	controller starts its operation. According to the diagram, the door must
+	be closed within ten seconds after receiving the \texttt{FinishBoarding}
+	signal, otherwise the whole component shuts down as a result of this
+	failure. Otherwise the doors are certainly closed before continuing to
+	listen to the \texttt{StartBoarding} signal.}
+
+\begin{figure}
+	\includegraphics[width=\textwidth]{stm-ControllerBehavior.jpg}
+	\caption{The state machine representation of the
+		\gls{boardingController}'s behaviour}%
+	\label{fig:stm-ControllerBehavior}
+\end{figure}
+
+\begin{figure}
+	\begin{subfigure}{.33\textwidth}
+		\includegraphics[width=\textwidth]
+		{stm-ControllerBehavior-SendCloseActivity.jpg}
+	\end{subfigure}
+	\begin{subfigure}{.33\textwidth}
+		\includegraphics[width=\textwidth]
+		{stm-ControllerBehavior-SendLockActivity.jpg}
+	\end{subfigure}
+	\begin{subfigure}{.33\textwidth}
+		\includegraphics[width=\textwidth]
+		{stm-ControllerBehavior-SendOpenActivity.jpg}
+	\end{subfigure}
+	% below
+	\begin{subfigure}{.33\textwidth}
+		\includegraphics[width=\textwidth]
+		{stm-ControllerBehavior-SendOffAndOkActivity.jpg}
+	\end{subfigure}
+	\begin{subfigure}{.33\textwidth}
+		\includegraphics[width=\textwidth]
+		{stm-ControllerBehavior-SendOffAndErrorActivity.jpg}
+	\end{subfigure}
+	\begin{subfigure}{.33\textwidth}
+		\includegraphics[width=\textwidth]
+		{stm-ControllerBehavior-SendOnAndStopActivity.jpg}
+	\end{subfigure}
+	\caption{Activity diagrams for the actions seen on transitons on
+		\cref{fig:stm-ControllerBehavior}}%
+	\label{fig:stm-ControllerBehavior-actions}
+\end{figure}
 
 % ------------------------------------------------------------------------------
 \section{Work journal}
