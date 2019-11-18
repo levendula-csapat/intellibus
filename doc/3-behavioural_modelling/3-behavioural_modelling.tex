@@ -103,13 +103,13 @@ door cannot close properly due to being blocked: in this case, a
 See \cref{fig:stm-DoorBehavior} for the state machine diagram. All the actions
 seen on the transitions can be seen on \cref{fig:stm-DoorBehavior-actions}.
 
-\begin{figure}
+\begin{figure}[hb]
 	\includegraphics[width=\textwidth]{stm-DoorBehavior.jpg}
 	\caption{State machine diagram modelling the door's behaviour}%
 	\label{fig:stm-DoorBehavior}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[hb]
 	\begin{subfigure}{.33\textwidth}
 		\includegraphics[width=\textwidth]
 		{stm-DoorBehavior-SendOpenedActivity.jpg}
@@ -157,7 +157,7 @@ that correspond to the possible cases as \emph{interrupting}.
 
 The activity diagram can be found on \cref{fig:act-ScannerBehavior}.
 
-\begin{figure}
+\begin{figure}[hb]
 	\includegraphics[width=\textwidth]{act-ScannerBehavior.jpg}
 	\caption{Activity diagram of the \gls{RFIDScanner}'s behaviour}%
 	\label{fig:act-ScannerBehavior}
@@ -220,14 +220,14 @@ within the allocated ten seconds, the controller turns off the alarm, sends an
 	failure. Otherwise the doors are certainly closed before continuing to
 	listen to the \texttt{StartBoarding} signal.}
 
-\begin{figure}
+\begin{figure}[hb]
 	\includegraphics[width=\textwidth]{stm-ControllerBehavior.jpg}
 	\caption{The state machine representation of the
 		\gls{boardingController}'s behaviour}%
 	\label{fig:stm-ControllerBehavior}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[hb]
 	\begin{subfigure}{.33\textwidth}
 		\includegraphics[width=\textwidth]
 		{stm-ControllerBehavior-SendCloseActivity.jpg}
