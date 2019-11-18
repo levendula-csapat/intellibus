@@ -247,7 +247,7 @@ We have evaluated the tree with the unrealibility values seen on
 		\gls{wheelSpeedSensor}   & \(0.01\)  \\
 		communication bus        & \(0.002\) \\
 		\textit{\gls{selfCheck}} & \(0.005\) \\
-		\textit{comparator}      & \(0.005\) \\
+		\textit{comparator}      & \(0.001\) \\
 		\bottomrule
 	\end{tabular}
 	\caption{Table of unreliability values for the second iteration}%
@@ -257,10 +257,7 @@ We have evaluated the tree with the unrealibility values seen on
 Now, as seen on \cref{fig:eval_extended}, the unreliability value of the
 top-level hazard is:
 
-\[ Q = {\left((0.01 + 0.002) \times 0.005\right)}^2 + 0.005 + 0.005 = 0.01 \]
-
-(A manual calculation could be performed in similar manner to the previous
-ones.)
+\[ Q = {\left((0.01 + 0.002) \times 0.005\right)}^2 + 0.005 + 0.001 = 0.006 \]
 
 \begin{figure}
 	\centering
@@ -289,7 +286,22 @@ reevaluated te model to see. The last fault tree can be seen on
 According to the software used, the diffence is so insignificant, it does not
 even show:
 
-\[ Q = 0.01 \]
+\[ Q = 0.006 \]
+
+Calculating manually we found how minute the differece is:
+
+\[
+	\begin{aligned}
+		Q_2 &= {\left((0.01 + 0.002) \times 0.005\right)}^2
+		       + 0.005 + 0.001
+		     = 0.006000003 \\
+		Q_3 &= {\left((0.01 + 0.002) \times 0.005\right)}^3
+		       + 0.005 + 0.001
+		     = 0.006000000 \\
+		& \Downarrow \\
+		\Delta Q &= 3.6 \times 10^{-9}
+	\end{aligned}
+\]
 
 \begin{figure}
 	\centering
